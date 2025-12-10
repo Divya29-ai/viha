@@ -132,4 +132,97 @@ class Screen2 extends StatelessWidget {
       ),
     );
   }
+}.         
+
+
+
+
+
+
+8aimport 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool big = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("Simple Animation")),
+        body: Center(
+          child: AnimatedContainer(
+            duration: Duration(seconds: 1),
+            height: big ? 200 : 100,
+            width: big ? 200 : 100,
+            color: big ? Colors.blue : Colors.red,
+            curve: Curves.easeInOut,
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              big = !big;
+            });
+          },
+          child: Icon(Icons.play_arrow),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+8bimport 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool show = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("Simple Animation")),
+        body: Center(
+          child: AnimatedOpacity(
+            duration: Duration(seconds: 1),
+            opacity: show ? 1 : 0,         // fade
+            child: AnimatedContainer(
+              duration: Duration(seconds: 1),
+              margin: EdgeInsets.only(top: show ? 0 : 100), // slide
+              height: 150,
+              width: 150,
+              color: Colors.blue,
+            ),
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              show = !show;   // toggle animation
+            });
+          },
+          child: Icon(Icons.play_arrow),
+        ),
+      ),
+    );
+  }
 }
